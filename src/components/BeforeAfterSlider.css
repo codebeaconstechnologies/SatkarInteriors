@@ -1,0 +1,102 @@
+.before-after {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.before-after__frame {
+  --pos: 50%;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--surface-3);
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+
+@media (min-width: 768px) {
+  .before-after__frame {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.before-after__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.before-after__img--before {
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+
+.before-after__tag {
+  position: absolute;
+  top: var(--space-4);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgb(21 29 26 / 0.72);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.before-after__tag--before {
+  left: var(--space-4);
+}
+
+.before-after__tag--after {
+  right: var(--space-4);
+  background: rgb(255 255 255 / 0.9);
+  color: var(--primary-deep);
+}
+
+.before-after__divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  margin-left: -1px;
+  background: #fff;
+  box-shadow: 0 0 12px rgb(0 0 0 / 0.35);
+  pointer-events: none;
+}
+
+.before-after__handle {
+  position: absolute;
+  top: 50%;
+  left: var(--pos);
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--primary-strong);
+  box-shadow: var(--shadow);
+  transform: translate(-50%, -50%);
+  transition: transform var(--dur) var(--ease);
+}
+
+.before-after__frame:active .before-after__handle {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.before-after__handle:focus-visible {
+  outline: 3px solid var(--accent-soft);
+  outline-offset: 3px;
+}
+
+.before-after__caption {
+  font-size: 0.875rem;
+  color: var(--fg-subtle);
+}

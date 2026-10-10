@@ -1,0 +1,218 @@
+/* ---------- Founder ---------- */
+.founder {
+  display: grid;
+  gap: var(--space-7);
+  padding-bottom: var(--section-y);
+}
+
+.founder__media {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-xl);
+}
+
+.founder__copy {
+  display: grid;
+  gap: var(--space-4);
+  align-content: center;
+  justify-items: start;
+}
+
+.founder__copy > p:not(.eyebrow):not(.founder__role) {
+  color: var(--fg-muted);
+  max-width: 38rem;
+}
+
+.founder__role {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--fg-subtle);
+}
+
+.founder__quote {
+  margin-block: var(--space-3);
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--primary);
+}
+
+.founder__cta {
+  margin-top: var(--space-3);
+}
+
+@media (min-width: 900px) {
+  .founder {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+}
+
+/* ---------- Values ---------- */
+.values {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.values li {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line-strong);
+}
+
+.values__num {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  color: var(--accent);
+}
+
+.values h3 {
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.values p {
+  font-size: 0.9375rem;
+  color: var(--fg-muted);
+}
+
+@media (min-width: 640px) {
+  .values {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6) var(--space-5);
+  }
+}
+
+@media (min-width: 1024px) {
+  .values {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- Studio band ---------- */
+.studio-band {
+  position: relative;
+  background: var(--primary-deep);
+  color: var(--on-dark);
+}
+
+.studio-band__media {
+  aspect-ratio: 16 / 9;
+  max-height: 34rem;
+  width: 100%;
+}
+
+.studio-band__inner {
+  display: grid;
+  gap: var(--space-7);
+  padding-block: var(--section-y);
+}
+
+.studio-band__copy {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 42rem;
+}
+
+.studio-band h2 {
+  color: #fff;
+}
+
+.studio-band__copy > p:not(.eyebrow) {
+  color: var(--on-dark-muted);
+}
+
+.studio-band__eyebrow {
+  color: var(--accent-soft);
+}
+
+.studio-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.studio-band__address {
+  font-size: 0.875rem;
+  color: var(--on-dark-muted);
+}
+
+.studio-band :focus-visible {
+  outline-color: #fff;
+}
+
+/* ---------- Comparison table ---------- */
+.compare {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.compare table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.compare th,
+.compare td {
+  padding: var(--space-4) var(--space-5);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+
+.compare tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.compare thead th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  background: var(--surface-2);
+}
+
+.compare thead th:nth-child(2) {
+  color: var(--primary);
+}
+
+.compare tbody th {
+  font-weight: 600;
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+.compare td:nth-child(2) {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.compare td:nth-child(2) svg {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-right: 0.25rem;
+  color: var(--primary);
+}
+
+.compare td:nth-child(3) {
+  color: var(--fg-subtle);
+}
+
+/* The portrait subject sits right of centre in a landscape source. */
+.founder__media img {
+  object-position: 72% center;
+}

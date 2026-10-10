@@ -1,0 +1,10 @@
+name = "satkar-interiors"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "dist"
+
+# Optional rate limit for /api/contact (5 requests per 10 minutes per IP).
+# Create the namespace with `npx wrangler kv namespace create RATE_LIMIT_KV`
+# and uncomment with the returned id. The function skips rate limiting when absent.
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = "<namespace-id>"

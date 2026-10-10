@@ -1,0 +1,180 @@
+.contact-form {
+  display: grid;
+  gap: var(--space-6);
+  padding: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.contact-form__head {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.contact-form__head p {
+  font-size: 0.875rem;
+  color: var(--fg-subtle);
+}
+
+.contact-form__grid {
+  display: grid;
+  gap: var(--space-5) var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .contact-form__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .field--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+}
+
+.field label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.field label > span[aria-hidden='true'] {
+  color: var(--danger);
+}
+
+.field__optional {
+  font-weight: 400;
+  color: var(--fg-subtle);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  font-size: 1rem; /* 16px stops iOS zooming on focus */
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
+}
+
+.field select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23414845' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #66716b;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--primary-soft);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgb(51 80 70 / 0.18);
+}
+
+.field [aria-invalid='true'] {
+  border-color: var(--danger);
+}
+
+.field [aria-invalid='true']:focus {
+  box-shadow: 0 0 0 3px rgb(156 52 39 / 0.16);
+}
+
+.field__error {
+  font-size: 0.8125rem;
+  color: var(--danger);
+}
+
+.contact-form__hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form__error {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  padding: var(--space-4);
+  border: 1px solid rgb(156 52 39 / 0.3);
+  border-radius: var(--radius);
+  background: rgb(156 52 39 / 0.06);
+  font-size: 0.9375rem;
+  color: var(--danger);
+}
+
+.contact-form__submit[disabled] {
+  opacity: 0.75;
+  cursor: progress;
+}
+
+.contact-form__spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgb(255 255 255 / 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Success ---------- */
+.contact-form__done {
+  justify-items: start;
+  gap: var(--space-4);
+}
+
+.contact-form__done:focus {
+  outline: none;
+}
+
+.contact-form__done-icon {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--success);
+}
+
+.contact-form__done p {
+  color: var(--fg-muted);
+}
