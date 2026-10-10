@@ -1,0 +1,21 @@
+.not-found {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+  padding-block: clamp(4rem, 3rem + 6vw, 8rem);
+  max-width: 48rem;
+}
+
+.not-found__code {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 3rem + 10vw, 9rem);
+  font-style: italic;
+  line-height: 1;
+  color: var(--surface-3);
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}

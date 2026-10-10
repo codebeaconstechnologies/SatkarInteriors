@@ -1,0 +1,54 @@
+.google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0.6rem 1rem 0.6rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+.google-badge:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow);
+}
+
+.google-badge__text {
+  display: grid;
+  line-height: 1.25;
+}
+
+.google-badge__score {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.google-badge__score strong {
+  font-size: 1.05rem;
+}
+
+.google-badge__stars {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--surface-3);
+}
+
+.google-badge__stars .is-on {
+  color: #e8a33d;
+}
+
+.google-badge__cta {
+  font-size: 0.875rem;
+}
+
+.google-badge__label {
+  font-size: 0.75rem;
+  color: var(--fg-subtle);
+}

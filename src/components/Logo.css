@@ -1,0 +1,19 @@
+.logo {
+  display: block;
+  height: auto;
+}
+
+.logo--header {
+  width: auto;
+  height: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .logo--header {
+    height: 2.75rem;
+  }
+}
+
+.logo--footer {
+  width: 13.5rem;
+}
