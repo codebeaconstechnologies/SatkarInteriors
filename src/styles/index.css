@@ -50,7 +50,7 @@
   --space-9: 6rem;
   --section-y: clamp(4rem, 3rem + 5vw, 7.5rem);
   --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
-  --container: 76rem;
+  --container: 92rem;
 
   /* Shape & depth */
   --radius-sm: 6px;
