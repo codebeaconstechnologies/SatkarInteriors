@@ -13,10 +13,8 @@ export default function NotFound() {
         <p className="not-found__code" aria-hidden="true">
           404
         </p>
-        <h1 id="nf-title">
-          This room <em>doesn’t exist</em>, yet.
-        </h1>
-        <p className="lead">The page you were looking for has moved or no longer exists. Let’s get you somewhere beautiful.</p>
+        <h1 id="nf-title">Page not found</h1>
+        <p className="lead">The page you were looking for has moved or no longer exists.</p>
         <div className="not-found__actions">
           <Link to="/" className="btn btn--primary">
             Back to home <Icon name="arrow-right" size={18} />

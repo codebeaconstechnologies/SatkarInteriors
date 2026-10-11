@@ -1,0 +1,36 @@
+.statement {
+  padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+  border-block: 1px solid var(--line);
+  text-align: center;
+}
+
+.statement__inner {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+}
+
+.statement__line {
+  max-width: 22ch;
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  font-style: italic;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--primary-strong);
+  text-wrap: balance;
+}
+
+.statement__text {
+  max-width: 40rem;
+  font-size: var(--step-1);
+  color: var(--fg-muted);
+}
+
+/* A short rule under the text, like a signature mark. */
+.statement__inner::after {
+  content: '';
+  width: 3rem;
+  height: 1px;
+  background: var(--accent);
+}

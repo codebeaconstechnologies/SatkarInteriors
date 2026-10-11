@@ -91,6 +91,12 @@
   font-size: 0.8125rem;
 }
 
+.site-footer__bottom a {
+  color: var(--on-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media (min-width: 640px) {
   .site-footer__grid {
     grid-template-columns: 1fr 1fr;

@@ -28,7 +28,8 @@ export interface Pledge {
 
 export interface ProcessStep {
   title: string;
-  duration: string;
+  /** Short label above the title. Deliberately not a duration: we don't promise timelines. */
+  stage: string;
   text: string;
 }
 
@@ -40,41 +41,42 @@ export interface Stat {
 export const studio = {
   name: 'Satkar Interiors',
   legalName: 'Satkar Interiors',
-  tagline: 'Innovative design, stylish ideas.',
-  promise: 'Thoughtfully designed spaces. Beautifully crafted interiors. Made around the way you live.',
+  /** The line from the logo. Used as the home page headline. */
+  tagline: 'Innovative Designs, Stylish Ideas',
+  promise: 'Home interiors in Pune and Mumbai, designed by us and built at your site by our own team.',
   description:
-    'Civil engineer-led interior design studio in Pune crafting modular kitchens, wardrobes, custom furniture and turnkey home interiors across Punawale, Wakad, Hinjewadi, Baner and PCMC.',
+    'Interior designers in Pune and Mumbai with 13+ years of experience. Modular kitchens, wardrobes, custom furniture and complete home interiors, led by a civil engineer.',
   url: SITE_URL,
-  foundedYear: 2014,
+  foundedYear: 2013,
 
   city: 'Pune',
-  serviceAreas: ['Punawale', 'Wakad', 'Hinjewadi', 'Baner', 'Balewadi', 'Ravet', 'PCMC'],
+  /** Cities we take projects in. Used in copy, SEO and schema. */
+  regions: ['Pune', 'Mumbai'],
+  serviceAreas: ['Pune', 'Pimpri-Chinchwad', 'Hinjewadi', 'Wakad', 'Baner', 'Mumbai', 'Thane', 'Navi Mumbai'],
 
   founder: {
     name: 'Satkar R. Nandurkar',
     title: 'Founder & Principal Designer',
     credentials: 'B.Tech Civil · B.Sc Interior Design',
-    quote: 'An interior must outlast the building’s monsoons, not just look good in renders.',
+    quote: 'A kitchen should still close properly after ten monsoons. That matters more to me than how it looks in a 3D render.',
     bio: [
-      'Satkar Nandurkar trained as a civil engineer before studying interior design. Working on Pune’s fast-growing residential corridors, he kept seeing the same thing: beautiful interiors that warped, sagged and stained within two years because nobody had looked past the laminate.',
-      'He founded Satkar Interiors to fix that with two disciplines: engineering rigour on site, and factory-made joinery off site. Every project is still personally overseen by him, from the first measurement to the final handover.',
+      'Satkar studied civil engineering first and interior design after that. In his early years on site he saw a lot of good-looking interiors swell, sag or stain within a couple of years, mostly because of cheap ply and rushed work.',
+      'He started Satkar Interiors to do it properly: check the structure first, build everything at site with our own carpenters, and never rush the finishing. After 13+ years he still visits every project himself, from the first measurement to handover.',
     ],
   },
 
   phones: [
-    { display: '+91 86052 04113', tel: '+918605204113', label: 'Studio' },
-    { display: '+91 91580 70183', tel: '+919158070183', label: 'Consultation' },
+    { display: '+91 86052 04113', tel: '+918605204113', label: 'Call us' },
   ] as const satisfies readonly Phone[],
   /** Digits only, with country code. */
   whatsapp: '918605204113',
-  whatsappMessage: 'Hello Satkar Interiors, I would like to discuss interiors for my home in Pune.',
+  whatsappMessage: 'Hello Satkar Interiors, I would like to discuss interiors for my home.',
   email: 'satkarinteriors93@gmail.com',
 
   social: {
-    // TODO(client): the draft spelled this handle two ways; confirm the exact Instagram/Facebook URLs.
-    instagram: 'https://www.instagram.com/satkarinteriorspune/',
-    facebook: 'https://www.facebook.com/satkarinteriorspune',
-    instagramHandle: '@satkarinteriorspune',
+    instagram: 'https://www.instagram.com/satkarinteriors_pune/',
+    facebook: 'https://www.facebook.com/satkarinterio',
+    instagramHandle: '@satkarinteriors_pune',
   },
 
   address: {
@@ -104,9 +106,9 @@ export const studio = {
 
   // TODO(client): confirm every figure below.
   stats: [
-    { value: '10+', label: 'Years of practice' },
+    { value: '13+', label: 'Years of experience' },
     { value: '150+', label: 'Homes delivered' },
-    { value: '45', label: 'Day turnkey handover' },
+    { value: '2 cities', label: 'Pune & Mumbai' },
     { value: '10 yr', label: 'Hardware warranty' },
   ] satisfies Stat[],
 
@@ -114,31 +116,31 @@ export const studio = {
     {
       id: 'full-home',
       title: 'Full Home Interiors',
-      summary: 'Turnkey design and execution for 2, 3 and 4 BHK apartments and penthouses, from civil changes to styling.',
+      summary: 'Design and execution for 1 to 4 BHK flats, penthouses and bungalows, including civil and electrical work.',
       image: '/images/studio/service-full-home.jpg',
     },
     {
       id: 'kitchens',
       title: 'Modular Kitchens',
-      summary: 'Built for Indian cooking: IS:710 marine ply carcasses, quartz counters and soft-close Blum fittings.',
+      summary: 'Made for Indian cooking, with marine ply, quartz tops and Blum soft-close fittings.',
       image: '/images/studio/service-kitchens.jpg',
     },
     {
       id: 'wardrobes',
       title: 'Wardrobes & Storage',
-      summary: 'Floor-to-ceiling wardrobes, walk-ins and fluted-glass sliders with lit, organised interiors.',
+      summary: 'Full-height wardrobes, walk-in closets and sliding wardrobes, planned inside as well as out.',
       image: '/images/studio/service-wardrobes.jpg',
     },
     {
       id: 'furniture',
       title: 'Custom Furniture',
-      summary: 'Solid oak, teak and ash dining tables, beds, consoles and room dividers made in our workshop.',
+      summary: 'Beds, dining tables, TV units and partitions made to size, right at your site.',
       image: '/images/studio/service-furniture.jpg',
     },
     {
       id: 'renovation',
       title: 'Renovation',
-      summary: 'Civil modifications, waterproofing and layout changes signed off by a civil engineer.',
+      summary: 'Wall changes, waterproofing, flooring and layout changes, checked by a civil engineer.',
       image: '/images/studio/service-renovation.jpg',
     },
   ] satisfies Service[],
@@ -146,103 +148,119 @@ export const studio = {
   promises: [
     {
       icon: 'ruler',
-      title: 'Engineer-led, start to finish',
-      text: 'Beams, conduits, plumbing gradients and load paths are checked before a single laminate is chosen.',
+      title: 'A civil engineer on every project',
+      text: 'We check beams, plumbing and electrical lines before we start choosing laminates and colours.',
     },
     {
       icon: 'hammer',
-      title: 'Factory-made joinery',
-      text: 'Cabinets and wardrobes are cut on CNC machines in our workshop, so your home stays free of sawdust for months.',
+      title: 'Built at your site',
+      text: 'Our own carpenters build everything at your home, so you can see the work grow day by day and make changes on the spot.',
     },
     {
       icon: 'clock',
-      title: '45-day handover',
-      text: 'Most of the fabrication happens off site, so on-site assembly is fast, clean and on schedule.',
+      title: 'Never rushed',
+      text: 'We give every stage the time it needs. A home built in a hurry shows its flaws within a year.',
     },
     {
       icon: 'shield',
       title: '10-year hardware warranty',
-      text: 'Genuine Blum and Häfele fittings with soft-close dampers, backed by a 5-year workmanship guarantee.',
+      text: 'We use Blum and Häfele fittings, and give our own 5-year warranty on workmanship.',
     },
     {
       icon: 'layers',
-      title: 'Monsoon-proof materials',
-      text: 'IS:710 marine-grade BWP plywood in every kitchen base and sink unit, so steam and spills never warp a shutter.',
+      title: 'Marine ply in wet areas',
+      text: 'Kitchen base units and sink cabinets use IS:710 BWP marine plywood, which holds up to water and humidity.',
     },
     {
       icon: 'receipt',
-      title: 'Itemised, fixed BOQ',
-      text: 'Every hinge, panel and electrical point is listed in your contract. No mid-project price surprises.',
+      title: 'Item-by-item costing',
+      text: 'Materials, hardware and labour are written down item by item, so the cost does not change halfway through.',
     },
   ] satisfies Pledge[],
 
   process: [
     {
-      title: 'Discover',
-      duration: 'Days 1–3',
-      text: 'A site visit to laser-measure every room and audit beams, conduits, plumbing and daylight.',
+      title: 'Site visit',
+      stage: 'Understand',
+      text: 'We visit your home, take measurements and understand what you need.',
     },
     {
-      title: '3D Design',
-      duration: 'Days 4–10',
-      text: 'Photo-real 3D views of your layout with lighting moods, plus an itemised bill of quantities.',
+      title: '3D design',
+      stage: 'Visualise',
+      text: 'You see the layout and 3D views of each room, and we make changes until you are happy.',
     },
     {
       title: 'Materials',
-      duration: 'Days 8–12',
-      text: 'Pick finishes, laminates, stone and hardware from real samples at our Punawale studio.',
+      stage: 'Select',
+      text: 'Choose laminates, stone, handles and hardware from real samples at our studio.',
     },
     {
-      title: 'Execution',
-      duration: 'Days 12–38',
-      text: 'Joinery is made in our workshop while our team handles civil, ceiling and electrical work on site.',
+      title: 'Work on site',
+      stage: 'Build',
+      text: 'Our carpenters, electricians and painters work at your home, with Satkar checking the work at every stage.',
     },
     {
       title: 'Handover',
-      duration: 'Days 39–45',
-      text: 'Precision assembly, deep cleaning, a walkthrough and your warranty pack, then the keys.',
+      stage: 'Deliver',
+      text: 'Fitting, cleaning and a final walkthrough with you. Then we hand over the keys and warranty papers.',
     },
   ] satisfies ProcessStep[],
 
   values: [
     {
-      title: 'Structure before surface',
-      text: 'We audit RCC beams, wall loads, conduits and plumbing before choosing a single finish.',
+      title: 'Structure first',
+      text: 'We check beams, walls, plumbing and wiring before we plan the design.',
     },
     {
-      title: 'Warm, honest materials',
-      text: 'Natural oak, cane, limewash and quartz instead of high-gloss plastics and ornate gold mouldings.',
+      title: 'Materials that age well',
+      text: 'Wood, cane, stone and quartz, instead of glossy finishes that look dated in a few years.',
     },
     {
-      title: 'Made in our own workshop',
-      text: 'Carcasses and shutters are machined in-house for tight tolerances and no hollow cavities.',
+      title: 'Patience over speed',
+      text: 'Good finishing takes time. We would rather take a few more days than hand over something we are not proud of.',
     },
     {
-      title: 'Transparent pricing',
-      text: 'Fixed, itemised contracts with no hidden escalation clauses.',
+      title: 'Clear pricing',
+      text: 'Everything is written down item by item before work starts.',
     },
   ],
 
   faqs: [
     {
-      q: 'How do you hand over in 45 days?',
-      a: 'Around 80% of the cabinetry and wardrobes are made off site in our workshop while civil and electrical work happens in your home. On-site work is then mostly fast, clean assembly.',
+      q: 'Which areas do you work in?',
+      a: 'Most of our projects are in Pune and Mumbai, including Pimpri-Chinchwad, Hinjewadi, Wakad, Baner, Thane and Navi Mumbai.',
+    },
+    {
+      q: 'Is the furniture made at my site?',
+      a: 'Yes. Our own carpenters build everything at your home, so you can see the work as it happens and ask for changes along the way.',
+    },
+    {
+      q: 'How long will my project take?',
+      a: 'It depends on the size of the home and the work involved. After the site visit we share a realistic plan, but we don’t rush. Good finishing needs time, and we would rather take a few extra days than hand over something half done.',
+    },
+    {
+      q: 'Will there be dust and noise?',
+      a: 'Some, as with any site work. We cover floors and fittings, clean up regularly and follow your society’s working hours.',
+    },
+    {
+      q: 'Do I need to be at the site every day?',
+      a: 'No. We share photo updates on WhatsApp, and you are welcome to visit whenever you like.',
+    },
+    {
+      q: 'Can I choose the materials myself?',
+      a: 'Yes. We show you real samples of laminates, stone, handles and hardware, and you decide.',
     },
     {
       q: 'What plywood do you use?',
-      a: 'Calibrated IS:710 marine-grade BWP plywood for kitchens and other wet areas, and BWR/BWP ply with 1.2mm machine-pressed edge banding for wardrobes.',
-    },
-    {
-      q: 'Can I see your workshop before signing?',
-      a: 'Yes. We encourage clients to visit our Punawale studio to inspect plywood cores, edge banding and hardware before committing.',
-    },
-    {
-      q: 'How do I get a quote?',
-      a: 'Send us an enquiry or WhatsApp your floor plan. We visit to measure, then share a 3D layout and an itemised estimate so you know exactly what you are paying for.',
+      a: 'IS:710 BWP marine plywood for kitchens and other wet areas, and BWR/BWP plywood for wardrobes.',
     },
     {
       q: 'What warranty do I get?',
-      a: 'A 10-year manufacturer warranty on Blum and Häfele hardware, plus our own 5-year workmanship guarantee on joinery, hinges and laminates.',
+      a: '10 years on Blum and Häfele hardware from the manufacturer, and 5 years from us on workmanship.',
+    },
+    {
+      q: 'How do we get started?',
+      a: 'Call us, send a message from this page or WhatsApp us your floor plan. We will fix a time to visit and talk about your home.',
     },
   ],
 } as const;
@@ -255,6 +273,9 @@ export const fullAddress = [
   `${studio.address.city} ${studio.address.postalCode}`,
   studio.address.region,
 ].join(', ');
+
+/** "Pune and Mumbai" */
+export const regionsText = studio.regions.join(' and ');
 
 export function whatsappUrl(message: string = studio.whatsappMessage): string {
   return `https://wa.me/${studio.whatsapp}?text=${encodeURIComponent(message)}`;
