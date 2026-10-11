@@ -13,10 +13,17 @@
   display: grid;
   gap: var(--space-5);
   justify-items: start;
+  container-type: inline-size;
 }
 
-.hero__copy h1 em {
+/* Sized to the column so "Innovative Designs," always fits on one line. */
+.hero__title {
+  font-size: clamp(2rem, 10.5cqi, 4.75rem);
+}
+
+.hero__line {
   display: block;
+  white-space: nowrap;
 }
 
 .hero__lead {

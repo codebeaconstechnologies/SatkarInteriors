@@ -36,12 +36,10 @@ export default function Home() {
         <div className="container hero__grid">
           <div className="hero__copy">
             <p className="eyebrow">Since {studio.foundedYear} · {studio.regions.join(' & ')}</p>
-            <h1 id="hero-title">
+            <h1 id="hero-title" className="hero__title">
               {/* Kept for search engines and screen readers; the visible headline is the logo tagline. */}
               <span className="visually-hidden">{studio.name}, interior designers in {regionsText}. </span>
-              Innovative Designs,
-              <br />
-              <em>Stylish Ideas</em>
+              <span className="hero__line">Innovative Designs,</span> <em className="hero__line">Stylish Ideas</em>
             </h1>
             <p className="lead hero__lead">{studio.promise}</p>
             <div className="hero__actions">
