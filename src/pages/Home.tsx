@@ -8,12 +8,13 @@ import { Icon } from '../components/Icon';
 import { ProcessTimeline } from '../components/ProcessTimeline';
 import { ProjectCard } from '../components/ProjectCard';
 import { SectionHeading } from '../components/SectionHeading';
+import { Statement } from '../components/Statement';
 import { Seo } from '../components/Seo';
 import { StatsStrip } from '../components/StatsStrip';
 import { Testimonials } from '../components/Testimonials';
 import { aboutImage, beforeAfterPairs, heroSlides } from '../data/images';
 import { featuredProjects } from '../data/projects';
-import { studio, whatsappUrl } from '../data/studio';
+import { regionsText, studio, whatsappUrl } from '../data/studio';
 import { testimonials } from '../data/testimonials';
 import { revealDelay } from '../lib/reveal';
 import './Home.css';
@@ -26,7 +27,7 @@ export default function Home() {
   return (
     <>
       <Seo
-        description={`${studio.name} is a civil engineer-led interior design studio in Pune for modular kitchens, wardrobes, custom furniture and turnkey home interiors. Itemised quotes and 3D designs.`}
+        description={`${studio.name}: interior designers in ${regionsText} with 13+ years of experience. Modular kitchens, wardrobes, custom furniture and complete home interiors.`}
         path="/"
       />
 
@@ -34,14 +35,18 @@ export default function Home() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="container hero__grid">
           <div className="hero__copy">
-            <p className="eyebrow">Civil engineer-led studio · Since {studio.foundedYear}</p>
+            <p className="eyebrow">Since {studio.foundedYear} · {studio.regions.join(' & ')}</p>
             <h1 id="hero-title">
-              Interior Designers <em>in {studio.city}</em>
+              {/* Kept for search engines and screen readers; the visible headline is the logo tagline. */}
+              <span className="visually-hidden">{studio.name}, interior designers in {regionsText}. </span>
+              Innovative Designs,
+              <br />
+              <em>Stylish Ideas</em>
             </h1>
             <p className="lead hero__lead">{studio.promise}</p>
             <div className="hero__actions">
               <Link to="/contact" className="btn btn--primary">
-                Get a Quote <Icon name="arrow-right" size={18} />
+                Contact Us <Icon name="arrow-right" size={18} />
               </Link>
               <a className="btn btn--secondary" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
                 <Icon name="whatsapp" size={18} /> WhatsApp us
@@ -72,12 +77,8 @@ export default function Home() {
           <SectionHeading
             id="services-title"
             eyebrow="What we do"
-            title={
-              <>
-                Interiors made for <em>the way Pune lives</em>
-              </>
-            }
-            intro="From kitchens built for daily tadka to solid-oak dining tables, everything is designed in our studio and made in our own workshop."
+            title="Our services"
+            intro="From a single kitchen to a complete home. We design it with you and our own team builds it at your site."
           />
           <ul role="list" className="services">
             {studio.services.map((service, i) => (
@@ -100,8 +101,8 @@ export default function Home() {
         <div className="container">
           <SectionHeading
             id="projects-title"
-            eyebrow="Selected work"
-            title="Recent homes across West Pune"
+            eyebrow="Our work"
+            title="Recent projects"
             aside={
               <Link to="/gallery" className="link-arrow">
                 View all projects <Icon name="arrow-right" size={16} />
@@ -116,6 +117,11 @@ export default function Home() {
         </div>
       </section>
 
+      <Statement
+        line="Perfection takes time."
+        text="Every detail deserves the patience it takes to create something extraordinary."
+      />
+
       {/* Before / after */}
       {pair && (
         <section className="section" aria-labelledby="transform-title">
@@ -123,12 +129,8 @@ export default function Home() {
             <SectionHeading
               id="transform-title"
               eyebrow="Before & after"
-              title={
-                <>
-                  From bare shell <em>to home</em>
-                </>
-              }
-              intro="Drag the handle, or use the arrow keys, to see how a builder-handover flat becomes a finished home."
+              title="Before and after"
+              intro="Drag the handle to compare the flat as it was handed over by the builder with how it looks today."
             />
             {beforeAfterPairs.length > 1 && (
               <div className="pair-tabs" role="group" aria-label="Choose a room">
@@ -152,11 +154,9 @@ export default function Home() {
           <div className="why__intro">
             <div className="why__sticky">
               <p className="eyebrow">Why Satkar</p>
-              <h2 id="why-title">
-                Engineered to <em>last</em>, designed to be lived in
-              </h2>
+              <h2 id="why-title">Why clients choose us</h2>
               <p className="lead">
-                Most interiors fail where you can’t see them. Ours start with the structure, the plumbing and the plywood.
+                Most interior problems show up a year or two later: swollen shutters, loose hinges, a leaking sink. We plan for these from day one.
               </p>
               {studioPhoto && (
                 <div className="why__media media">
@@ -184,9 +184,9 @@ export default function Home() {
         <div className="container">
           <SectionHeading
             id="process-title"
-            eyebrow="How it works"
-            title="Five steps, one accountable team"
-            intro="A clear plan with dated milestones and weekly site updates, from the first visit to the day we hand you the keys."
+            eyebrow="How we work"
+            title="From first visit to handover"
+            intro="Art can’t be rushed, and neither can a home. One team takes your project from start to finish and gives every stage the time it needs."
           />
           <ProcessTimeline steps={studio.process} />
         </div>
@@ -197,8 +197,8 @@ export default function Home() {
         <div className="container">
           <SectionHeading
             id="reviews-title"
-            eyebrow="Client stories"
-            title="Homes our clients love coming back to"
+            eyebrow="Reviews"
+            title="What our clients say"
             aside={<GoogleRatingBadge />}
           />
           <Testimonials items={testimonials} />

@@ -76,7 +76,7 @@ export function Header() {
             <span>{primaryPhone.display}</span>
           </a>
           <Link to="/contact" className="btn btn--primary site-header__cta">
-            Get a Quote
+            Contact Us
           </Link>
           <button
             ref={toggleRef}
@@ -111,7 +111,7 @@ export function Header() {
           </ul>
           <div className="mobile-menu__actions">
             <Link to="/contact" className="btn btn--primary btn--block">
-              Get a Quote
+              Contact Us
             </Link>
             <div className="mobile-menu__row">
               <a className="btn btn--secondary" href={`tel:${primaryPhone.tel}`}>

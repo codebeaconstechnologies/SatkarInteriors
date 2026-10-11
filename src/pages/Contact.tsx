@@ -3,26 +3,22 @@ import { Icon } from '../components/Icon';
 import { PageIntro } from '../components/PageIntro';
 import { Seo } from '../components/Seo';
 import { google } from '../data/google';
-import { fullAddress, studio, whatsappUrl } from '../data/studio';
+import { fullAddress, regionsText, studio, whatsappUrl } from '../data/studio';
 import './Contact.css';
 
 export default function Contact() {
   return (
     <>
       <Seo
-        title={`Contact Interior Designers in ${studio.city}`}
-        description={`Get an itemised quote from ${studio.name}. Call, WhatsApp or visit our ${studio.address.locality} studio in ${studio.city}.`}
+        title={`Contact Interior Designers in ${studio.regions.join(' & ')}`}
+        description={`Contact ${studio.name}, interior designers in ${regionsText}. Call, WhatsApp or visit our ${studio.address.locality} studio in ${studio.city}.`}
         path="/contact"
       />
 
       <PageIntro
         eyebrow="Contact"
-        title={
-          <>
-            Talk to an interior designer <em>in {studio.city}</em>
-          </>
-        }
-        lead="Tell us about your home. We’ll visit, measure, and come back with a 3D layout and an itemised estimate."
+        title="Contact us"
+        lead={`Tell us a little about your home and we’ll call you back within one working day. We take projects across ${regionsText}.`}
       />
 
       <section className="container contact" aria-label="Enquiry form and contact details">

@@ -3,21 +3,22 @@ import { CtaBand } from '../components/CtaBand';
 import { Icon } from '../components/Icon';
 import { PageIntro } from '../components/PageIntro';
 import { SectionHeading } from '../components/SectionHeading';
+import { Statement } from '../components/Statement';
 import { Seo } from '../components/Seo';
 import { StatsStrip } from '../components/StatsStrip';
 import { google } from '../data/google';
 import { aboutImage } from '../data/images';
-import { fullAddress, studio, yearsInPractice } from '../data/studio';
+import { fullAddress, regionsText, studio } from '../data/studio';
 import { revealDelay } from '../lib/reveal';
 import './About.css';
 
 const COMPARISON = [
-  { factor: 'Who leads', us: 'A civil engineer and interior designer', typical: 'Stylists or contractor brokers' },
-  { factor: 'Where cabinets are made', us: 'CNC-cut in our own workshop', typical: 'Hand-cut on your floor for months' },
-  { factor: 'Kitchen carcass', us: 'IS:710 marine-grade BWP plywood', typical: 'MR ply or particle board' },
-  { factor: 'Hardware', us: 'Genuine Blum / Häfele, 10-year warranty', typical: 'Unbranded fittings that sag' },
-  { factor: 'Timeline', us: '45-day turnkey handover', typical: 'Four to eight open-ended months' },
-  { factor: 'Pricing', us: 'Fixed, itemised BOQ', typical: 'Mid-project price revisions' },
+  { factor: 'Who leads the project', us: 'A civil engineer and interior designer', typical: 'A contractor or middleman' },
+  { factor: 'Who builds it', us: 'Our own carpenters, at your site', typical: 'Subcontracted labour' },
+  { factor: 'Kitchen plywood', us: 'IS:710 BWP marine plywood', typical: 'MR ply or particle board' },
+  { factor: 'Hardware', us: 'Blum / Häfele, 10-year warranty', typical: 'Unbranded fittings' },
+  { factor: 'Pace', us: 'Each stage gets the time it needs', typical: 'Rushed to meet a promised date' },
+  { factor: 'Pricing', us: 'Written item by item before work starts', typical: 'Extra charges added later' },
 ];
 
 export default function About() {
@@ -27,19 +28,15 @@ export default function About() {
   return (
     <>
       <Seo
-        title={`About Our Interior Design Studio in ${studio.city}`}
-        description={`Meet ${studio.founder.name}, the civil engineer behind ${studio.name}: ${yearsInPractice}+ years of engineer-led interior design and in-house joinery in ${studio.city}.`}
+        title={`About Us | Interior Designers in ${studio.regions.join(' & ')}`}
+        description={`Meet ${studio.founder.name}, the civil engineer behind ${studio.name}: 13+ years of interior design and in-house furniture making in ${regionsText}.`}
         path="/about"
       />
 
       <PageIntro
-        eyebrow="About the studio"
-        title={
-          <>
-            An engineer-led interior studio <em>in {studio.city}</em>
-          </>
-        }
-        lead={`Since ${studio.foundedYear}, ${studio.name} has combined structural know-how with warm, natural design, so every home looks right on day one and still works ten monsoons later.`}
+        eyebrow="About us"
+        title={`About ${studio.name}`}
+        lead={`For more than 13 years we have designed and built homes in ${regionsText}. We are led by a civil engineer, so we look at the structure of your home as carefully as the design.`}
       />
 
       {/* Founder */}
@@ -50,7 +47,7 @@ export default function About() {
           </div>
         )}
         <div className="founder__copy" data-reveal>
-          <p className="eyebrow">Founder’s story</p>
+          <p className="eyebrow">Founder</p>
           <h2 id="founder-title">{studio.founder.name}</h2>
           <p className="founder__role">
             {studio.founder.title} · {studio.founder.credentials}
@@ -70,7 +67,7 @@ export default function About() {
       {/* Values */}
       <section className="section" aria-labelledby="values-title">
         <div className="container">
-          <SectionHeading id="values-title" eyebrow="What we believe" title="The principles behind every Satkar home" />
+          <SectionHeading id="values-title" eyebrow="Our approach" title="What we care about" />
           <ol className="values">
             {studio.values.map((v, i) => (
               <li key={v.title} data-reveal style={revealDelay(i)}>
@@ -85,6 +82,11 @@ export default function About() {
         </div>
       </section>
 
+      <Statement
+        line="Beautiful spaces aren’t built in a hurry."
+        text="They are crafted with thought, refined with patience and finished with passion."
+      />
+
       {/* Studio photo + stats */}
       <section className="studio-band" aria-labelledby="studio-title">
         {studioPhoto && (
@@ -94,10 +96,10 @@ export default function About() {
         )}
         <div className="container studio-band__inner">
           <div className="studio-band__copy" data-reveal>
-            <p className="eyebrow studio-band__eyebrow">Visit the studio</p>
-            <h2 id="studio-title">See the materials before you commit</h2>
+            <p className="eyebrow studio-band__eyebrow">Our studio</p>
+            <h2 id="studio-title">Come and see the materials</h2>
             <p>
-              Inspect plywood cores, edge banding and hardware at our {studio.address.locality} studio. {studio.address.landmark}.
+              See the plywood, edge banding and hardware we use at our {studio.address.locality} studio. {studio.address.landmark}.
             </p>
             <div className="studio-band__actions">
               <a className="btn btn--light" href={google.directionsUrl} target="_blank" rel="noopener noreferrer">
@@ -115,20 +117,20 @@ export default function About() {
         <div className="container">
           <SectionHeading
             id="compare-title"
-            eyebrow="An honest comparison"
-            title="How we differ from a typical decorator"
-            intro="Questions worth asking any interior firm before you sign a contract."
+            eyebrow="Comparison"
+            title="How we are different"
+            intro="A few things worth asking any interior firm before you sign."
           />
           <div className="compare" data-reveal>
             <table>
-              <caption className="visually-hidden">{studio.name} compared with a typical decorator</caption>
+              <caption className="visually-hidden">{studio.name} compared with a typical contractor</caption>
               <thead>
                 <tr>
                   <th scope="col">
                     <span className="visually-hidden">Factor</span>
                   </th>
                   <th scope="col">{studio.name}</th>
-                  <th scope="col">Typical decorator</th>
+                  <th scope="col">Typical contractor</th>
                 </tr>
               </thead>
               <tbody>

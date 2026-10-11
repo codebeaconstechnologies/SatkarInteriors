@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { google } from '../data/google';
-import { fullAddress, studio, whatsappUrl } from '../data/studio';
+import { fullAddress, regionsText, studio, whatsappUrl } from '../data/studio';
 import { Icon } from './Icon';
 import { Logo } from './Logo';
 import './Footer.css';
@@ -41,7 +41,7 @@ export function Footer() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/gallery">Projects</Link></li>
             <li><Link to="/about">About the studio</Link></li>
-            <li><Link to="/contact">Get a quote</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </nav>
 
@@ -76,9 +76,14 @@ export function Footer() {
 
       <div className="container site-footer__bottom">
         <p>
-          © {year} {studio.legalName}. Interior designers in {studio.city}.
+          © {year} {studio.legalName}. Interior designers in {regionsText}.
         </p>
-        <p>Serving {studio.serviceAreas.join(' · ')}</p>
+        <p>
+          Developed by{' '}
+          <a href="https://codebeacons.in" target="_blank" rel="noopener">
+            Code Beacons Technologies
+          </a>
+        </p>
       </div>
     </footer>
   );

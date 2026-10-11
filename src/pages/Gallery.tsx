@@ -4,7 +4,7 @@ import { PageIntro } from '../components/PageIntro';
 import { ProjectCard } from '../components/ProjectCard';
 import { Seo } from '../components/Seo';
 import { PROJECT_CATEGORIES, projects, type ProjectCategory } from '../data/projects';
-import { studio } from '../data/studio';
+import { regionsText, studio } from '../data/studio';
 import './Gallery.css';
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -25,19 +25,15 @@ export default function Gallery() {
   return (
     <>
       <Seo
-        title={`Interior Design Projects in ${studio.city}`}
-        description={`Explore ${studio.name}’s completed homes, modular kitchens, wardrobes and bedrooms across Punawale, Wakad, Hinjewadi, Baner and Ravet in ${studio.city}.`}
+        title={`Interior Design Projects in ${studio.regions.join(' & ')}`}
+        description={`Completed homes, modular kitchens, wardrobes and bedrooms by ${studio.name}, interior designers in ${regionsText}.`}
         path="/gallery"
       />
 
       <PageIntro
         eyebrow="Our work"
-        title={
-          <>
-            Interior design projects <em>in {studio.city}</em>
-          </>
-        }
-        lead="Every home here was designed in our studio, made in our workshop and handed over by our own team."
+        title="Projects"
+        lead="Homes, kitchens and wardrobes we have designed and built. Open a project to see more photos."
       />
 
       <section className="container gallery" aria-label="Projects">
@@ -63,7 +59,7 @@ export default function Gallery() {
         </div>
       </section>
 
-      <CtaBand title="Like what you see? Let’s plan yours." />
+      <CtaBand title="Like what you see? Let’s talk about your home." />
     </>
   );
 }

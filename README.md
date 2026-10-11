@@ -72,18 +72,18 @@ Optional: bind a KV namespace as `RATE_LIMIT_KV` (see `wrangler.toml`) to limit 
 1. `npm install && npm run build`, then check that `dist/` contains `index.html`, `about.html`,
    `gallery.html`, `contact.html`, `gallery/*.html`, `404.html` and `sitemap.xml`.
 2. `npx wrangler login` (sign in to the **client's** Cloudflare account).
-3. `npx wrangler pages project create satkar-interiors --production-branch main`
+3. `npx wrangler pages project create satkarinteriors --production-branch main`
 4. Add the secrets (each command prompts for the value):
    ```bash
-   npx wrangler pages secret put RESEND_API_KEY --project-name satkar-interiors
-   npx wrangler pages secret put CONTACT_EMAIL  --project-name satkar-interiors
-   npx wrangler pages secret put FROM_EMAIL     --project-name satkar-interiors
+   npx wrangler pages secret put RESEND_API_KEY --project-name satkarinteriors
+   npx wrangler pages secret put CONTACT_EMAIL  --project-name satkarinteriors
+   npx wrangler pages secret put FROM_EMAIL     --project-name satkarinteriors
    ```
-5. Deploy: `npx wrangler pages deploy dist --project-name satkar-interiors --branch main`
-6. **Custom domain** (Cloudflare dashboard → Workers & Pages → satkar-interiors → Custom domains):
+5. Deploy: `npx wrangler pages deploy dist --project-name satkarinteriors --branch main`
+6. **Custom domain** (Cloudflare dashboard → Workers & Pages → satkarinteriors → Custom domains):
    1. Add `www.<domain>`, then add the bare `<domain>`.
    2. If the domain's DNS is on Cloudflare, the CNAME records are created for you. Otherwise, at your
-      registrar, create `CNAME www → satkar-interiors.pages.dev` and point the bare domain as the
+      registrar, create `CNAME www → satkarinteriors.pages.dev` and point the bare domain as the
       dashboard instructs (or move the nameservers to Cloudflare, which is simplest).
    3. Wait for both to show **Active**. The middleware then 301-redirects the bare domain to `www`.
    4. Make sure `SITE_URL` in `src/data/site.ts` matches, then rebuild and redeploy.

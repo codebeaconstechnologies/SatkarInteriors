@@ -20,7 +20,7 @@ export type SeoTag =
   | { tag: 'link'; attrs: Record<string, string> };
 
 export const DEFAULT_OG_IMAGE = '/images/og-image.jpg';
-const HOME_TITLE = `${studio.name} | Interior Designers in ${studio.city}`;
+const HOME_TITLE = `${studio.name} | Interior Designers in ${studio.regions.join(' & ')}`;
 
 export function absoluteUrl(pathOrUrl: string): string {
   return new URL(pathOrUrl, SITE_URL).toString();

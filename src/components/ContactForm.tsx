@@ -19,7 +19,7 @@ const FIELD_ORDER: EnquiryField[] = ['name', 'phone', 'email', 'projectType', 'p
 
 function whatsappSummary(e: Enquiry): string {
   return [
-    'Hello Satkar Interiors, I’d like a quote.',
+    'Hello Satkar Interiors, I’d like to discuss my home interiors.',
     `Name: ${e.name}`,
     `Phone: ${e.phone}`,
     e.email && `Email: ${e.email}`,
@@ -126,7 +126,7 @@ export function ContactForm() {
   return (
     <form ref={formRef} className="contact-form" onSubmit={onSubmit} noValidate aria-labelledby={`${uid}-title`}>
       <div className="contact-form__head">
-        <h2 id={`${uid}-title`}>Get a quote</h2>
+        <h2 id={`${uid}-title`}>Send us a message</h2>
         <p>
           Fields marked <span aria-hidden="true">*</span>
           <span className="visually-hidden">with an asterisk</span> are required. We reply within one working day.
@@ -194,14 +194,14 @@ export function ContactForm() {
           <label htmlFor={id('location')}>
             Location <span className="field__optional">(society / area)</span>
           </label>
-          <input {...fieldProps('location')} type="text" autoComplete="address-level2" maxLength={120} placeholder="e.g. Kohinoor Coral, Punawale" />
+          <input {...fieldProps('location')} type="text" autoComplete="address-level2" maxLength={120} placeholder="e.g. Wakad, Pune or Thane, Mumbai" />
         </div>
 
         <div className="field field--wide">
           <label htmlFor={id('message')}>
             About your project <span aria-hidden="true">*</span>
           </label>
-          <textarea {...fieldProps('message')} rows={5} required maxLength={2000} placeholder="Rooms, budget range, when you’d like to start…" />
+          <textarea {...fieldProps('message')} rows={5} required maxLength={2000} placeholder="Which rooms, and when you’d like to start" />
           {errorFor('message')}
         </div>
 

@@ -15,7 +15,7 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
             {String(i + 1).padStart(2, '0')}
           </span>
           <div className="timeline__body">
-            <p className="timeline__duration">{step.duration}</p>
+            <p className="timeline__duration">{step.stage}</p>
             <h3>{step.title}</h3>
             <p>{step.text}</p>
           </div>

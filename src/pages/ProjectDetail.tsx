@@ -31,14 +31,13 @@ export default function ProjectDetail() {
     { label: 'Home', value: project.bhk },
     { label: 'Area', value: project.area },
     { label: 'Year', value: project.year },
-    { label: 'Timeline', value: project.duration },
     { label: 'Client', value: project.client },
   ];
 
   return (
     <>
       <Seo
-        title={`${project.title}: ${project.category} Interior in ${project.location}, ${studio.city}`}
+        title={`${project.title}: ${project.category} Interior Design, ${studio.city}`}
         description={`${project.summary} A ${project.bhk} project in ${project.location}, ${studio.city} by ${studio.name}.`}
         path={`/gallery/${project.slug}`}
         image={project.cover?.src}
@@ -96,7 +95,7 @@ export default function ProjectDetail() {
 
         <section className="container project__story" aria-labelledby="story-title">
           <div className="project__text" data-reveal>
-            <h2 id="story-title">The story</h2>
+            <h2 id="story-title">About the project</h2>
             {project.description.map((para) => (
               <p key={para.slice(0, 32)}>{para}</p>
             ))}

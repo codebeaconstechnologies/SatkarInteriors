@@ -29,7 +29,12 @@ export function localBusinessJsonLd(): string {
       addressCountry: studio.address.country,
     },
     geo: { '@type': 'GeoCoordinates', latitude: studio.address.geo.lat, longitude: studio.address.geo.lng },
-    areaServed: studio.serviceAreas.map((name) => ({ '@type': 'Place', name: `${name}, ${studio.city}` })),
+    areaServed: [
+      ...studio.regions.map((name) => ({ '@type': 'City', name })),
+      ...studio.serviceAreas
+        .filter((name) => !(studio.regions as readonly string[]).includes(name))
+        .map((name) => ({ '@type': 'Place', name })),
+    ],
     openingHoursSpecification: studio.openingHours.map((h) => ({
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: h.dayOfWeek,
